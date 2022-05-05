@@ -1,0 +1,61 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Supply-Chain Code Quality Check
+
+env:
+  DIST_PATH: .\dist
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  Quality-Check:
+    #if: github.repository_owner == 'Magellan-Supply-Chain' 
+    # The type of runner that the job will run on
+    #runs-on: [CS]
+    runs-on: windows-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+#      - name: downlaod dacpac
+#        run: |
+#          New-Alias -Name "wget" invoke-WebRequest
+#          ./build/pull-dacpacs.ps1
+#      
+#      - name: scan-sqlproj
+#        uses: yongmams/sqlproj-code-analysis-action@dev
+#        with:
+#          source-path: 'Magellan-WW-Synapse-SC/Magellan-WW-Synapse-SC.sln'
+#          outfile-path: ${{env.DIST_PATH}}
+#          msbuild-arguments: "-t:rebuild -p:RunSqlCodeAnalysis=True -p:SqlCodeAnalysisRules='' -p:Configuration=Release"
+      
+      # Upload SARIF file to GitHub Code Scanning Alerts
+      - name: Upload SARIF to GitHub
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: ${{env.DIST_PATH}}
+          
+      - name: upload code scan reslut
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-scan-result
+          path: |
+            ${{env.DIST_PATH}}
+          retention-days: 90          
