@@ -1,0 +1,183 @@
+{
+
+  "version": "2.1.0",
+  "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "MSBuild",
+          "informationUri": "https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild?view=vs-2022",
+          "rules": [
+            {
+              "id": "Microsoft.Rules.Data.SR0007",
+              "shortDescription": {
+                "text": "An ISNULL function was not used in a comparison expression where a column could contain a NULL value."
+              },
+              "helpUri": "https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd193267(v=vs.100)",
+              "properties": {
+                "category": "Microsoft.Performance"
+              }
+            },
+            {
+              "id": "Microsoft.Rules.Data.SR0014",
+              "shortDescription": {
+                "text": "The data type for a column, variable, or parameter is being converted implicitly to another data type."
+              },
+              "helpUri": "https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd193269(v=vs.100)",
+              "properties": {
+                "category": "Microsoft.Design"
+              }
+            },
+            {
+              "id": "Microsoft.Rules.Data.SR0001",
+              "shortDescription": {
+                "text": "One or more of your stored procedures, views, or table-valued functions contains SELECT *."
+              },
+              "helpUri": "https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd193296(v=vs.100)",
+              "properties": {
+                "category": "Microsoft.Design"
+              }
+            },
+            {
+              "id": "GR0109",
+              "shortDescription": {
+                "text": "GR0109: Avoid using IN/NOT IN for a subquery."
+              },
+              "properties": {
+                "category": "Microsoft.Custom"
+              }
+            },
+            {
+              "id": "Microsoft.Rules.Data.SR0004",
+              "shortDescription": {
+                "text": "An IN predicate references a column that does not have an index."
+              },
+              "helpUri": "https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd193249(v=vs.100)",
+              "properties": {
+                "category": "Microsoft.Performance"
+              }
+            },
+            {
+              "id": "GR0110",
+              "shortDescription": {
+                "text": "GR0110: Avoid ORDER BY clause does not contain order(ASC/DESC)."
+              },
+              "properties": {
+                "category": "Microsoft.Custom"
+              }
+            },
+            {
+              "id": "GR0106",
+              "shortDescription": {
+                "text": "GR0106: Object names (e.g. table, schema, column) must be wrapped up with square brackets []"
+              },
+              "properties": {
+                "category": "Microsoft.Custom"
+              }
+            },
+            {
+              "id": "GR0212",
+              "shortDescription": {
+                "text": "GR0212: UNION operator is used."
+              },
+              "properties": {
+                "category": "Microsoft.Custom"
+              }
+            },
+            {
+              "id": "GR0203",
+              "shortDescription": {
+                "text": "GR0203: Non-sargable statement used."
+              },
+              "properties": {
+                "category": "Microsoft.Custom"
+              }
+            },
+            {
+              "id": "GR0211",
+              "shortDescription": {
+                "text": "GR0211: OR verb is used in a WHERE clause."
+              },
+              "properties": {
+                "category": "Microsoft.Custom"
+              }
+            },
+            {
+              "id": "GR0213",
+              "shortDescription": {
+                "text": "GR0213: EXECUTE/EXEC for dynamic query is used, Use parameterized sp_executesql instead."
+              },
+              "properties": {
+                "category": "Microsoft.Custom"
+              }
+            },
+            {
+              "id": "Microsoft.Rules.Data.SR0009",
+              "shortDescription": {
+                "text": "One or more data types of variable length have a length of 1 or 2."
+              },
+              "helpUri": "https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd193263(v=vs.100)",
+              "properties": {
+                "category": "Microsoft.Design"
+              }
+            }
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/actions-runner/_work/Magellan-WW-Synapse/Magellan-WW-Synapse/somesqlfile.sql"
+          }
+        }
+      ],
+      "results": [
+        {
+          "level": "warning",
+          "message": {
+            "text": "Nullable columns can cause final results to be evaluated as NULL for the predicate."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/actions-runner/_work/Magellan-WW-Synapse/Magellan-WW-Synapse/somesqlfile.sql",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 12
+                }
+              }
+            }
+          ],
+          "ruleId": "Microsoft.Rules.Data.SR0007",
+          "ruleIndex": 0
+        },
+        {
+          "level": "warning",
+          "message": {
+            "text": "Nullable columns can cause final results to be evaluated as NULL for the predicate."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/actions-runner/_work/Magellan-WW-Synapse/Magellan-WW-Synapse/somesqlfile.sql",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 12
+                }
+              }
+            }
+          ],
+          "ruleId": "Microsoft.Rules.Data.SR0007",
+          "ruleIndex": 0
+        }
+      ]
+    }
+  ]
+}
